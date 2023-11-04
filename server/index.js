@@ -4,6 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const FormEntry = require("./schema/mongSchema");
 const server = express();
+const { sendEmail } = require("./emailModule/emalSender");
+const dotenv = require("dotenv");
 server.use(cors());
 server.use(bodyParser.json());
 
@@ -26,8 +28,9 @@ server.post("/form-server", async (req, res) => {
     console.error("Error while saving data:", error);
     res.status(500).json({ error: "Data could not be saved" });
   }
+  sendEmail();
 });
-
-server.listen(5000, () => {
+const PORT = process.env.PORT;
+server.listen(PORT, () => {
   console.log("yes server is listening");
 });

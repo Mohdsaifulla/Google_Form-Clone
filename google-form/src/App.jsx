@@ -36,10 +36,19 @@ console.log(data)
       [e.target.name]: e.target.value,
     });
   };
- 
+  const clearForm=()=>{
+  
+    window.location.reload();
+  }
+
   return (
     <>
       <div className="p-2 mt-10 flex flex-col justify-center items-center gap-4">
+        <div className= "grid gap-2 grid-cols-3 border bg-white border-gray-300 shadow-xl rounded-lg p-4 w-[76%] h-full ">
+          <img src="https://img.freepik.com/free-photo/view-3d-boy-using-laptop_23-2150709886.jpg" className="md:h-48 h-20 "/>
+          <img src="https://img.freepik.com/premium-photo/beautiful-animal-with-magical-color_593294-20347.jpg" className="md:h-48 h-20"/>
+          <img src="https://img.freepik.com/free-photo/3d-rendering-kid-playing-online_23-2150898631.jpg" className="md:h-48 h-20" />
+        </div>
         <div className="flex flex-col justify-start items-start  border bg-white border-gray-300 shadow-xl rounded-lg p-4 w-[76%]">
           <h1 className="text-2xl font-bold">Customized SOP Generator</h1>
           <div className="border border-b-gray-400 w-full h-[0.5px]"></div>
@@ -137,9 +146,7 @@ console.log(data)
             <li>3.Job duties</li>
           </ul>
           <p>
-            Sample Answer: I worked as a Sales Manager at Effizient Immigration
-            Inc from Jan 2022 till Feb 2023. In this role, I managed sales
-            operations, reaching out to leads, lead the outreach program,
+            Sample Answer: I worked as a Web Developer  at XYZ Company from Jan 2022 till Feb 2023. In this role, I managed Frontend operations, reaching out to leads, lead the outreach program,
             ensured meeting monthly targets.
           </p>
           <input
@@ -217,13 +224,13 @@ console.log(data)
             No
           </label>
         </div>
-        <div className="flex justify-center items-center gap-56">
-          <button className="bg-blue-400 p-2 rounded-md w-20 text-black font-bold">
+        <div className="flex justify-between items-center  w-9/12">
+          <button className="bg-blue-400 p-2 rounded-md w-20 text-black hover:bg-blue-300 duration-300 font-semibold">
             Submit
           </button>
-          <p className="text-blue-600 cursor-pointer">Clear Form</p>
+          <p className="text-blue-600 cursor-pointer hover:text-red-500 duration-300 font-semibold" onClick={clearForm}>Clear Form</p>
         </div>
-        <div className="flex flex-col w-9/12  text-sm gap-4 text-left">
+        <div className="flex flex-col w-9/12  text-sm gap-4 text-left ">
           <p>Never submit passwords through Google Forms.</p>
           <p>
             This content is neither created nor endorsed by Google.
@@ -234,6 +241,9 @@ console.log(data)
           <h1 className="text-center text-2xl font-bold text-gray-500">
             Google Forms
           </h1>
+          <p className="text-center  font-bold text-gray-500">
+            Made with ❤️ by saif
+          </p>
         </div>
       </form>
     </>

@@ -13,13 +13,14 @@ server.use(bodyParser.json());
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/GoogleFormData");
+  await mongoose.connect(process.env.MONGODB_URI);
 }
 
 server.post("/form-server", async (req, res) => {
   const serverData = req.body;
   const formEntry = new FormEntry(serverData);
   console.log(formEntry);
+  mongoose.set('maxTimeMS', 20000);
   try {
     const savedEntry = await formEntry.save();
     console.log("Data saved to MongoDB:", savedEntry);

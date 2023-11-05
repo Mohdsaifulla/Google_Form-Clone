@@ -20,17 +20,25 @@ async function sendEmail() {
   try {
     const data = await FormEntry.find({});
     console.log("yess");
-    const recipients = data.map(entry => entry.email);
+    const recipients = data[data.length - 1];
     const mailOptions = {
       from: process.env.SMTP_MAIL,
-      to: recipients.join(','),
+      to: `${recipients.email}`,
       subject: "Custom Email Subject",
-      text: `Hello, here's your data from MongoDB: ${JSON.stringify(data)}`,
-      html: `<p>Hello, here's your data from MongoDB: <pre>${JSON.stringify(
-        data,
-        null,
-        2
-      )}</pre></p>`,
+      text: 
+      `${recipients.name},
+      ${recipients.email},
+      Admissions Committee,
+      ${recipients.institute},
+      ${recipients.study}
+      Dear Admissions Committee,
+      I am ${(recipients.name).toUpperCase()} writing to express my strong interest in the ${(recipients.study).toUpperCase()} at ${(recipients.canadaInstitute).toUpperCase()}. With a deep passion and a strong educational foundation, I am excited to take my academic journey to the next level and make meaningful contributions to the field.
+      Academic Background:
+      I completed my ${(recipients.educationLevel).toUpperCase()}  from ${(recipients.study).toUpperCase()}, where I graduated with distinction.
+      Professional Experience: 
+      "${recipients.notes}"
+      I am applying from ${(recipients.whichCountry).toUpperCase()}, where my educational and professional journey has nurtured my passion.
+      `,
     };
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {

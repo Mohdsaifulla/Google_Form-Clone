@@ -11,24 +11,27 @@ const App = () => {
   //   notes: "",
   //   canadaInstitute: "",
   //   tuitionFee: "",
-  //   whichCountry: "", 
+  //   whichCountry: "",
   //   didUDoGic: "",
   // }
 
   const [form, setForm] = useState([]);
-  const handleForm = async(e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
-const fetchData= await fetch("http://localhost:5000/form-server",{
-  method:"POST",
-  body:JSON.stringify(form),
-  headers:{
-    "Content-Type":"application/json",
-  }
-})
-alert("your data is submitted you will be getting email")
-console.log(fetchData)
-const data=await fetchData.json()
-console.log(data)
+    const fetchData = await fetch(
+      "https://google-form-clone-iyo0.onrender.com/form-server",
+      {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    alert("your data is submitted you will be getting email");
+    console.log(fetchData);
+    const data = await fetchData.json();
+    console.log(data);
   };
   const handleInput = (e) => {
     setForm({
@@ -36,18 +39,26 @@ console.log(data)
       [e.target.name]: e.target.value,
     });
   };
-  const clearForm=()=>{
-  
+  const clearForm = () => {
     window.location.reload();
-  }
+  };
 
   return (
     <>
       <div className="p-2 mt-10 flex flex-col justify-center items-center gap-4">
-        <div className= "grid gap-2 grid-cols-3 border bg-white border-gray-300 shadow-xl rounded-lg p-4 w-[76%] h-full ">
-          <img src="https://img.freepik.com/free-photo/view-3d-boy-using-laptop_23-2150709886.jpg" className="md:h-48 h-20 "/>
-          <img src="https://img.freepik.com/premium-photo/beautiful-animal-with-magical-color_593294-20347.jpg" className="md:h-48 h-20"/>
-          <img src="https://img.freepik.com/free-photo/3d-rendering-kid-playing-online_23-2150898631.jpg" className="md:h-48 h-20" />
+        <div className="grid gap-2 grid-cols-3 border bg-white border-gray-300 shadow-xl rounded-lg p-4 w-[76%] h-full ">
+          <img
+            src="https://img.freepik.com/free-photo/view-3d-boy-using-laptop_23-2150709886.jpg"
+            className="md:h-48 h-20 "
+          />
+          <img
+            src="https://img.freepik.com/premium-photo/beautiful-animal-with-magical-color_593294-20347.jpg"
+            className="md:h-48 h-20"
+          />
+          <img
+            src="https://img.freepik.com/free-photo/3d-rendering-kid-playing-online_23-2150898631.jpg"
+            className="md:h-48 h-20"
+          />
         </div>
         <div className="flex flex-col justify-start items-start  border bg-white border-gray-300 shadow-xl rounded-lg p-4 w-[76%]">
           <h1 className="text-2xl font-bold">Customized SOP Generator</h1>
@@ -146,8 +157,10 @@ console.log(data)
             <li>3.Job duties</li>
           </ul>
           <p>
-            Sample Answer: I worked as a Web Developer  at XYZ Company from Jan 2022 till Feb 2023. In this role, I managed Frontend operations, reaching out to leads, lead the outreach program,
-            ensured meeting monthly targets.
+            Sample Answer: I worked as a Web Developer at XYZ Company from Jan
+            2022 till Feb 2023. In this role, I managed Frontend operations,
+            reaching out to leads, lead the outreach program, ensured meeting
+            monthly targets.
           </p>
           <input
             className="border-b-2 text-sm w-full outline-none focus:border-b-gray-500"
@@ -228,7 +241,12 @@ console.log(data)
           <button className="bg-blue-400 p-2 rounded-md w-20 text-black hover:bg-blue-300 duration-300 font-semibold">
             Submit
           </button>
-          <p className="text-blue-600 cursor-pointer hover:text-red-500 duration-300 font-semibold" onClick={clearForm}>Clear Form</p>
+          <p
+            className="text-blue-600 cursor-pointer hover:text-red-500 duration-300 font-semibold"
+            onClick={clearForm}
+          >
+            Clear Form
+          </p>
         </div>
         <div className="flex flex-col w-9/12  text-sm gap-4 text-left ">
           <p>Never submit passwords through Google Forms.</p>

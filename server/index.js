@@ -13,7 +13,10 @@ server.use(bodyParser.json());
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URI);
+  await mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 
 server.post("/form-server", async (req, res) => {

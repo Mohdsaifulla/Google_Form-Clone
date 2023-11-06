@@ -25,7 +25,7 @@ server.post("/form-server", async (req, res) => {
   const serverData = req.body;
   const formEntry = new FormEntry(serverData);
   console.log(formEntry);
-  mongoose.set("maxTimeMS", 30000);
+  mongoose.set("maxTimeMS", 50000);
   try {
     const savedEntry = await formEntry.save();
     console.log("Data saved to MongoDB:", savedEntry);

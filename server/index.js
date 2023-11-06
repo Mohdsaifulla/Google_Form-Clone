@@ -16,21 +16,24 @@ async function main() {
   await mongoose.connect(process.env.MONGODB_URI);
 }
 
-server.post("/form-server", async (req, res) => {
-  const serverData = req.body;
-  const formEntry = new FormEntry(serverData);
-  console.log(formEntry);
-  mongoose.set("maxTimeMS", 20000);
-  try {
-    const savedEntry = await formEntry.save();
-    console.log("Data saved to MongoDB:", savedEntry);
-    res.status(200).json({ message: "Data saved successfully" });
-  } catch (error) {
-    console.error("Error while saving data:", error);
-    res.status(500).json({ error: "Data could not be saved" });
+server.post(
+  "https://google-form-clone-iyo0.onrender.com/form-server",
+  async (req, res) => {
+    const serverData = req.body;
+    const formEntry = new FormEntry(serverData);
+    console.log(formEntry);
+    mongoose.set("maxTimeMS", 20000);
+    try {
+      const savedEntry = await formEntry.save();
+      console.log("Data saved to MongoDB:", savedEntry);
+      res.status(200).json({ message: "Data saved successfully" });
+    } catch (error) {
+      console.error("Error while saving data:", error);
+      res.status(500).json({ error: "Data could not be saved" });
+    }
+    sendEmail();
   }
-  sendEmail();
-});
+);
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
   console.log("yes server is listening");

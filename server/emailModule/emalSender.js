@@ -32,12 +32,12 @@ async function sendEmail() {
       ${recipients.institute},
       ${recipients.study}
       Dear Admissions Committee,
-      I am ${(recipients.name).toUpperCase()} writing to express my strong interest in the ${(recipients.study).toUpperCase()} at ${(recipients.canadaInstitute).toUpperCase()}. With a deep passion and a strong educational foundation, I am excited to take my academic journey to the next level and make meaningful contributions to the field.
+      I am ${recipients.name} writing to express my strong interest in the ${recipients.study} at ${recipients.canadaInstitute}. With a deep passion and a strong educational foundation, I am excited to take my academic journey to the next level and make meaningful contributions to the field.
       Academic Background:
-      I completed my ${(recipients.educationLevel).toUpperCase()}  from ${(recipients.study).toUpperCase()}, where I graduated with distinction.
+      I completed my ${recipients.educationLevel}  from ${recipients.study}, where I graduated with distinction.
       Professional Experience: 
       "${recipients.notes}"
-      I am applying from ${(recipients.whichCountry).toUpperCase()}, where my educational and professional journey has nurtured my passion.
+      I am applying from ${recipients.whichCountry}, where my educational and professional journey has nurtured my passion.
       `,
     };
     // Send the email

@@ -16,6 +16,8 @@ async function main() {
   await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    connectTimeoutMS: 30000, 
+    socketTimeoutMS: 30000,
   });
 }
 
@@ -23,7 +25,7 @@ server.post("/form-server", async (req, res) => {
   const serverData = req.body;
   const formEntry = new FormEntry(serverData);
   console.log(formEntry);
-  mongoose.set("maxTimeMS", 20000);
+  mongoose.set("maxTimeMS", 30000);
   try {
     const savedEntry = await formEntry.save();
     console.log("Data saved to MongoDB:", savedEntry);
